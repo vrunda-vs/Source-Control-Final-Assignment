@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="gatewayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Thread" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Level" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Logger" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Exception" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="product_details">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="category" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="price" Type="bigint" Nullable="false" />
+          <Property Name="quantity" Type="bigint" Nullable="false" />
+          <Property Name="short_description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="long_description" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="small_img" Type="text" Nullable="false" />
+          <Property Name="large_img" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="state" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mono" Type="bigint" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="dob" Type="nvarchar" MaxLength="50" />
+          <Property Name="doj" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="gatewayModelStoreContainer">
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_details" EntityType="Self.product_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gatewayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Thread" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Level" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Logger" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="product_details">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="category" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Int64" Nullable="false" />
+          <Property Name="quantity" Type="Int64" Nullable="false" />
+          <Property Name="short_description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="long_description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="small_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="large_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mono" Type="Int64" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="dob" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="doj" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="gatewayEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Logs" EntityType="Self.Log" />
+          <EntitySet Name="product_details" EntityType="Self.product_details" />
+          <EntitySet Name="Registrations" EntityType="Self.Registration" />
+          <EntitySet Name="students" EntityType="Self.student" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gatewayModelStoreContainer" CdmEntityContainer="gatewayEntities1">
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="gatewayModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Thread" ColumnName="Thread" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Logger" ColumnName="Logger" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_details">
+            <EntityTypeMapping TypeName="gatewayModel.product_details">
+              <MappingFragment StoreEntitySet="product_details">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="short_description" ColumnName="short_description" />
+                <ScalarProperty Name="long_description" ColumnName="long_description" />
+                <ScalarProperty Name="small_img" ColumnName="small_img" />
+                <ScalarProperty Name="large_img" ColumnName="large_img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="gatewayModel.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="mono" ColumnName="mono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="gatewayModel.student">
+              <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="doj" ColumnName="doj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
